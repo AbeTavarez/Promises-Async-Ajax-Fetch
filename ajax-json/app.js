@@ -3,7 +3,7 @@ console.log(`running script...`);
 //* =============== VARIABLES
 
 const btnOne = document.getElementById('button1');
-
+const btnTwo = document.getElementById('button2');
 
 
 
@@ -15,7 +15,21 @@ const loadCustomer = () => {
 
     xhr.onload = () => {
         if (xhr.status === 200){
-            console.log(xhr.responseText);
+            // parse JSON to an object
+            const customer = JSON.parse(xhr.responseText)
+
+            const output = `
+                <ul>
+                    <li>ID: ${customer.id}</li>
+                    <li>Name: ${customer.name}</li>
+                    <li>Company: ${customer.company}</li>
+                    <li>Phone: ${customer.phone}</li>
+                </ul>
+            `;
+
+            document.getElementById('customer').innerHTML = output
+            
+            // console.log(xhr.responseText);
         }
     }
 
@@ -23,6 +37,7 @@ const loadCustomer = () => {
 };
 
 
-
+//* ==================== Event Listeners
 
 btnOne.addEventListener('click', loadCustomer);
+

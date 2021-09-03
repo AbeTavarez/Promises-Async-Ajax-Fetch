@@ -4,23 +4,44 @@ const posts = [
     {title: 'Post Two', body: 'Post two body'}
 ];
 
-const createPost = (post) => {
-    setTimeout(() =>{
-        posts.push(post);
-    },2000);
+//* ============= Synchronous way 
+// const createPost = (post) => {
+//     setTimeout(() =>{
+//         posts.push(post);
+//     },2000);
+// };
+
+// const getPosts = () => {
+//     setTimeout(() => {
+//         let output = '';
+//         posts.forEach(post => {
+//             output += `<li>${post.title}</li>`
+//         });
+//         document.getElementById('app').innerHTML = output;
+//     }, 1000);
+// }
+
+// createPost({title: 'New Post', body: 'This is a new post'})
+
+// getPosts();
+
+//* ============= Asynchronous way
+const createPost = (post, cb) => {
+  setTimeout(() => {
+    posts.push(post);
+    cb(); // getPost will be called here
+  }, 2000);
 };
 
 const getPosts = () => {
-    setTimeout(() => {
-        let output = '';
-        posts.forEach(post => {
-            output += `<li>${post.title}</li>`
-        });
-        document.getElementById('app').innerHTML = output;
-    }, 1000);
-}
+  setTimeout(() => {
+    let output = "";
+    posts.forEach((post) => {
+      output += `<li>${post.title}</li>`;
+    });
+    document.getElementById("app").innerHTML = output;
+  }, 1000);
+};
 
-const newPost = {title: 'New Post', body: 'This is a new post'}
-createPost({title: 'New Post', body: 'This is a new post'})
-
-getPosts();
+// Calling createPost and passing getPosts as a callback
+createPost({ title: "New Post", body: "This is a new post" }, getPosts);

@@ -23,10 +23,7 @@ const loadData = () => {
             document.getElementById('output').innerHTML = `
                 <h1>${xhr.responseText}<h1>
             `;
-            // let div = document.getElementById('output');
-            // let p = document.createElement('p');
-            // p.innerText = xhr.responseText;
-            // div.appendChild(p)
+            
         };
     };
 

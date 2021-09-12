@@ -6,14 +6,14 @@ function EasyHTTP() {
 }
 
 //* Make a HTTP GET Request
-EasyHTTP.prototype.get = function(url){
+EasyHTTP.prototype.get = function(url, callback){
     this.http.open('GET', url, true);
 
     let self = this; // capture 'this' on this scope
 
     this.http.onload = function() {
         if (self.http.status === 200){
-            console.log(self.http.responseText);
+            callback(self.http.responseText);
         }
     }
 

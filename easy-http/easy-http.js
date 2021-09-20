@@ -35,12 +35,20 @@ EasyHTTP.prototype.post = function (url, data, callback) {
     }
 
     this.http.send(JSON.stringify(data));
+};
+
+//* ***** Make a HTTP PUT Request
+EasyHTTP.prototype.put = function (url, data, callback) {
+    this.http.open('PUT', url, true);
+    this.http.setRequestHeader('Content-type', 'application/json');
+
+    let self = this; // capture 'this' on this scope
+
+    this.http.onload = function() {
+        callback(null, self.http.responseText);
+    }
+
+    this.http.send(JSON.stringify(data));
 }
-
-
-
-
-
-//* Make a HTTP PUT Request
 //* Make a HTTP DELETE Request
 //* Make a HTTP GET Request

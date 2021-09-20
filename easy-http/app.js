@@ -26,10 +26,19 @@ const http = new EasyHTTP();
   }
 
   //* Create Post
-  http.post('https://jsonplaceholder.typicode.com/posts', data, function(error, post){
+//   http.post('https://jsonplaceholder.typicode.com/posts', data, function(error, post){
+//     if (error) {
+//         console.error(error)
+//     } else {
+//         console.log(post);
+//     }
+//   });
+
+//* Update Post
+http.put('https://jsonplaceholder.typicode.com/posts/1', data, function(error, post){
     if (error) {
-        console.error(error)
-    } else {
-        console.log(post);
-    }
-  })
+                console.error(error)
+            } else {
+                console.log(post);
+            }
+})

@@ -58,7 +58,9 @@ EasyHTTP.prototype.delete = function(url, callback){
 
     this.http.onload = function() {
         if (self.http.status === 200){
-            callback(null, self.http.responseText);
+            // instead of returning an empty obj return msg 'post deleted'
+            callback(null, 'Post Deleted');
+            // callback(null, self.http.responseText);
         } else {
             callback('Error: ' + self.http.status);
         }

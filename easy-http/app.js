@@ -1,4 +1,3 @@
-
 const http = new EasyHTTP();
 
 //* Get Posts
@@ -19,13 +18,13 @@ const http = new EasyHTTP();
 //     }
 //   });
 
-  //* create Data
-  const data = {
-      title: 'Custom Post',
-      body: 'This is a custom post'
-  }
+//* create Data
+const data = {
+  title: "Custom Post",
+  body: "This is a custom post",
+};
 
-  //* Create Post
+//* Create Post
 //   http.post('https://jsonplaceholder.typicode.com/posts', data, function(error, post){
 //     if (error) {
 //         console.error(error)
@@ -35,10 +34,24 @@ const http = new EasyHTTP();
 //   });
 
 //* Update Post
-http.put('https://jsonplaceholder.typicode.com/posts/1', data, function(error, post){
+// http.put(
+//   "https://jsonplaceholder.typicode.com/posts/1",
+//   data,
+//   function (error, post) {
+//     if (error) {
+//       console.error(error);
+//     } else {
+//       console.log(post);
+//     }
+//   }
+// );
+
+//* Delete Posts
+http.delete('https://jsonplaceholder.typicode.com/posts/1', function (error, response) {
     if (error) {
-                console.error(error)
-            } else {
-                console.log(post);
-            }
-})
+        console.error(error)
+    } else {
+        console.log(response);
+    }
+  });
+

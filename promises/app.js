@@ -29,4 +29,8 @@ const getPosts = () => {
     }, 1000);
 };
 
-createPost({title: "New Post", body: "This is a new post"}).then(getPosts)
+createPost({title: "New Post", body: "This is a new post"})
+.then(getPosts) // runs when resolve() is called
+.catch(err => { // catches the error from reject()
+        console.log(err);
+})

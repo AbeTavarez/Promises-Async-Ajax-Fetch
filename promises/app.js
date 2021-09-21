@@ -7,7 +7,26 @@ const createPost = post => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             posts.push(post);
-            resolve();
+            
+            const error = true;
+
+            if (!error){
+                resolve();
+            } else {
+                reject(`Error: Something went wrong!`)
+            }
         }, 2000)
     })
-}
+};
+
+const getPosts = () => {
+    setTimeout(() => {
+        let output = '';
+        posts.forEach(post => {
+            output += `<li>${post.title}</li>`;
+        });
+        document.body.innerHTML = output;
+    }, 1000);
+};
+
+createPost({title: "New Post", body: "This is a new post"}).then(getPosts)
